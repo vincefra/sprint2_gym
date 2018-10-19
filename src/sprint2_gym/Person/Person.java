@@ -2,8 +2,6 @@ package sprint2_gym.Person;
 
 import sprint2_gym.Helper;
 
-
-
 public class Person 
 {
     private long socialnumber;

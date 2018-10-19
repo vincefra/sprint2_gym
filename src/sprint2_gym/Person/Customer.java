@@ -3,10 +3,9 @@ package sprint2_gym.Person;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class Customer extends Person{
-    
+public class Customer extends Person
+{    
     private Date lastpayment;
-
     
     public void setLastpayment(Date lastpayment)
     {

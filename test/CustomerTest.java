@@ -5,8 +5,8 @@ import junit.framework.TestCase;
 import org.junit.Test;
 import sprint2_gym.Person.Customer;
 
-public class CustomerTest {
-    
+public class CustomerTest 
+{    
     Customer customer = new Customer();
     
     public CustomerTest() {
@@ -16,9 +16,8 @@ public class CustomerTest {
     public void getMembershipStatusTest() throws ParseException 
     { 
         customer.setLastpayment(
-                (Date)new SimpleDateFormat("yyyy-MM-dd").parse("2016-10-20"));
+                (Date)new SimpleDateFormat("yyyy-MM-dd").parse("2017-10-20"));
         
         TestCase.assertEquals("Giltigt", customer.getMembershipStatus(customer.getLastpayment()));
-        
     }
 }
