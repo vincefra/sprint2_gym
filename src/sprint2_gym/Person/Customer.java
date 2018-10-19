@@ -22,16 +22,25 @@ public class Customer extends Person
     {
         return "Namn: " + getName() + " " + getLastname() + "\n" +
                 "Personummer: " + getSocialnumber() + "\n" + 
-                "Medlemskap: " + getMembershipStatus(getLastpayment()) + "\n";
+                "Medlemskap: " + 
+                getMembershipStatus(checkMembershipStatus(getLastpayment())) + "\n";
     }
     
-    public String getMembershipStatus(Date lastpayment)
+    public int checkMembershipStatus(Date lastpayment)
     {
         long difference = new Date().getTime() - lastpayment.getTime();
 
         if ((TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS) / 365) >= 1)
-            return "Utgått";
+            return 0;
         else
-            return "Giltigt";
-    } 
+            return 1;
+    }
+    
+    public String getMembershipStatus(int status)
+    {
+        if (status == 0)
+            return "Utgått";
+        
+        return "Giltigt";
+    }
 }

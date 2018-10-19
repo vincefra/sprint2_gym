@@ -26,13 +26,13 @@ public class Sprint2_gym
 
                 if (scan.hasNext())
                 {
-                    Customer c = Files.ExistPerson(scan.nextLine(), Customers);
-                    if (c != null)
+                    Customer customer = Files.ExistPerson(scan.nextLine(), Customers);
+                    if (customer != null)
                     {
-                        if (c.getMembershipStatus(c.getLastpayment()).equalsIgnoreCase("Giltigt"))
-                            Files.WriteFile(c);
+                        if (customer.checkMembershipStatus(customer.getLastpayment()) == 1)
+                            Files.WriteFile(customer);
 
-                        System.out.println(c.toString());
+                        System.out.println(customer.toString());
                     }
                     else
                         System.out.println("Kunde ej hitta kund, var vänlig och försök igen!");

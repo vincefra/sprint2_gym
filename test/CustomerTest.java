@@ -18,6 +18,16 @@ public class CustomerTest
         customer.setLastpayment(
                 (Date)new SimpleDateFormat("yyyy-MM-dd").parse("2017-10-20"));
         
-        TestCase.assertEquals("Giltigt", customer.getMembershipStatus(customer.getLastpayment()));
+        TestCase.assertEquals("Giltigt", customer.getMembershipStatus(
+                customer.checkMembershipStatus(customer.getLastpayment())));
+    }
+    
+    @Test
+    public void checkMembershipStatusTest() throws ParseException 
+    { 
+        customer.setLastpayment(
+                (Date)new SimpleDateFormat("yyyy-MM-dd").parse("2017-10-20"));
+        
+        TestCase.assertEquals(1, customer.checkMembershipStatus(customer.getLastpayment()));
     }
 }
