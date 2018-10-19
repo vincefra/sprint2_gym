@@ -7,8 +7,7 @@ import sprint2_gym.Person.Customer;
 
 public class Sprint2_gym
 {
-    static Files files = new Files();
-    static ArrayList<Customer> Customers = files.LoadCustomerFile();
+    public static ArrayList<Customer> Customers = Files.LoadCustomerFile();
     
     public static void main(String[] args) 
     {
@@ -27,18 +26,17 @@ public class Sprint2_gym
 
                 if (scan.hasNext())
                 {
-                    Customer c = files.ExistPerson(scan.nextLine(), Customers);
+                    Customer c = Files.ExistPerson(scan.nextLine(), Customers);
                     if (c != null)
                     {
                         if (c.getMembershipStatus(c.getLastpayment()).equalsIgnoreCase("Giltigt"))
-                            files.WriteFile(c);
-                        
-                        System.out.println(c.toString());
-                        continue;
-                    }
-                }
+                            Files.WriteFile(c);
 
-                System.out.println("Kunde ej hitta kund, var vänlig och försök igen!");
+                        System.out.println(c.toString());
+                    }
+                    else
+                        System.out.println("Kunde ej hitta kund, var vänlig och försök igen!");
+                }
             }
             catch (InputMismatchException e)
             {

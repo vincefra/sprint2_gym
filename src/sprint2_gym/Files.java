@@ -12,13 +12,13 @@ import java.util.Date;
 import java.util.Scanner;
 import sprint2_gym.Person.Customer;
 
-public class Files {
+public final class Files {
     
-    Files(){}
+    private Files(){}
     
     // <editor-fold defaultstate="collapsed" desc=" File ">
 
-    public ArrayList<Customer> LoadCustomerFile()
+    public static ArrayList<Customer> LoadCustomerFile()
     {
         ArrayList<Customer> customers = new ArrayList();
         File file = new File("customers.txt"); 
@@ -56,7 +56,7 @@ public class Files {
         return customers;
     }
     
-    public void WriteFile(Customer customer)
+    public static void WriteFile(Customer customer)
     {
         try 
         { 
@@ -64,7 +64,6 @@ public class Files {
             boolean exist = file.exists();
                     
             FileWriter fileWritter = new FileWriter(file.getName(), true);
-            
             
             try (BufferedWriter bw = new BufferedWriter(fileWritter)) 
             {
@@ -87,23 +86,21 @@ public class Files {
         }
     }
     
-    public Customer ExistPerson(String data, ArrayList<Customer> customers)
+    public static Customer ExistPerson(String data, ArrayList<Customer> customers)
     {   
         if (customers.size() > 0)
         {
             for(Customer customer : customers)
-                if (Helper.tryParseLong(data) > 0)
+                if (customer.getName().equalsIgnoreCase(data))
+                        return customer;  
+                else if (Helper.tryParseLong(data) > 0)
                 {
                     if (customer.getSocialnumber() == Helper.tryParseLong(data))
                         return customer;
                 }
-                else if (customer.getName().equalsIgnoreCase(data))
-                        return customer;                 
         }
         
         return null;
     }
-    
     // </editor-fold>
-    
 }
