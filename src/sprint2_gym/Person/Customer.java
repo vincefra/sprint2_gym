@@ -30,17 +30,11 @@ public class Customer extends Person
     {
         long difference = new Date().getTime() - lastpayment.getTime();
 
-        if ((TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS) / 365) >= 1)
-            return 0;
-        else
-            return 1;
+        return (TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS) / 365 >= 1) ? 0 : 1;
     }
     
     public String getMembershipStatus(int status)
-    {
-        if (status == 0)
-            return "Utgått";
-        
-        return "Giltigt";
+    {   
+        return (status > 0) ? "Giltigt" : "Utgått";
     }
 }
