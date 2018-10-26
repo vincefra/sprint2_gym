@@ -56,7 +56,7 @@ public final class Files {
         return customers;
     }
     
-    public static void WriteFile(Customer customer)
+    public static boolean WriteFile(Customer customer)
     {
         try 
         { 
@@ -71,19 +71,21 @@ public final class Files {
                 {
                     bw.append(String.valueOf(customer.getSocialnumber()));
                     bw.append(", " + customer.getName() + " " + customer.getLastname());
-                    bw.newLine();
-                    
+                    bw.newLine();      
                 }
                 
                 bw.append(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
                 bw.newLine();
                 bw.close();
+                return true;
             }
         } 
         catch(IOException e)
         {
             e.printStackTrace();
         }
+        
+        return false;
     }
     
     public static Customer ExistPerson(String data, ArrayList<Customer> customers)

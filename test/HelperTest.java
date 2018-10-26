@@ -11,6 +11,7 @@ public class HelperTest
     public void onlyLettersTest() 
     {
         TestCase.assertFalse(Helper.onlyLetters("johan "));
+        TestCase.assertTrue(Helper.onlyLetters("johan"));
     }
     
     @Test
